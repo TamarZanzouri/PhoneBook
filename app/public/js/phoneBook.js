@@ -1,22 +1,19 @@
-var todoApp = angular.module("PhoneBook", []);
+var PhoneBookApp = angular.module("PhoneBook", []);
 var domain = "http://127.0.0.1:8080/"
 
 var model = {
 	user : "Tamar"
 }
 
-todoApp.run(function($http){
-	// $http.get(domain + "getAllBestSellersBooks").success(function(data){
-		// model.items = data;
-	// 	console.log(model.items)
-	// });
+PhoneBookApp.run(function($http){
 
 });
 
-todoApp.controller('MenuCtrl',['$scope', '$http',
+PhoneBookApp.controller('MenuCtrl',['$scope', '$http',
 	function($scope, $http){
 	$scope.contacts = model;
 
+	//on import click get all contacts from server
 	$scope.getAllContacts = function(actionTextBookId){
 		// console.log(actionTextBookId) 
 		$http.get(domain + "getAllContacts" ).success(function(data){
@@ -24,7 +21,7 @@ todoApp.controller('MenuCtrl',['$scope', '$http',
 			$scope.contacts.items = data;
 		});
 	}
-
+	//on submit put all fields in a object and sent it to server for insert to json array
 	$scope.submit = function() {
 		var newContact = {};
 		newContact.firstName = $scope.firstName;
@@ -45,9 +42,8 @@ todoApp.controller('MenuCtrl',['$scope', '$http',
 			$scope.contacts.items = data;
 		});
       };
-
+     //on export click create a file and export all contacts
 	$scope.exportContactsToFile = function(){
-		// console.log(actionTextMonth) 
 		$http.get(domain + "writeAllContactsToFile").success(function(data){
 			console.log(data)
 			alert(data);
