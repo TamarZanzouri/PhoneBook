@@ -1,0 +1,27 @@
+.panel-horizontal{
+       float: left;
+       width: 100%;
+       padding: 5px;
+       border-bottom: 0;
+       border-right: 1px solid black;
+       border-top-right-radius: 0;
+       margin-bottom: 20px;
+}
+
+/*.panel-horizontal .panel-body {
+       float: right;
+       margin: 0 0 15px 0;
+       padding-bottom: 0;
+       width: 80%;
+       padding: 0;
+}*/
+
+.input-group{
+	float: left;
+	margin: 0px 20px;
+}
+
+form{
+	float: left;
+	width: 60%;
+}

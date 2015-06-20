@@ -1,0 +1,83 @@
+	<!DOCTYPE html>
+	<html ng-app="PhoneBook">
+	<head>
+		<title>Phone Book</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body ng-controller="MenuCtrl">
+		<div class="page-header">
+			<h1>{{contacts.user}}'s Phone Book</h1>
+		</div>
+		<div class="panel panel-default panel-horizontal">
+				<div class="input-group">
+				<button class="btn btn-primary" ng-click="getAllContacts()">
+					Import
+				</button>
+			</div>
+			<div class="input-group">
+				<button class="btn btn-primary" ng-click="exportContactsToFile()">
+					export
+				</button>
+			</div>
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Filter by" ng-model="query">
+			</div>
+		</div>
+		<div id="form">
+		<form class="form-horizontal" role="form" ng-submit="submit()">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="firstName">First name:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="firstName" id="firstName" placeholder="Enter first name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="lastName">Last name:</label>
+				<div class="col-sm-10"> 
+					<input type="text" class="form-control" ng-model="lastName" id="lastName" placeholder="Enter last name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="phoneNumber">Phone #:</label>
+				<div class="col-sm-10">
+					<input type="tel" class="form-control" ng-model="phoneNumber" id="phoneNumber" pattern="[0][5][0-9]{8}" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="other">Other:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="other" id="other">
+				</div>
+			</div>
+			<div class="form-group"> 
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">Add</button>
+				</div>
+			</div>
+		</form>	
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Phone #</th>
+					<th>Other</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="contact in contacts.items | filter:query | orderBy:'firstName'">
+					<td>{{contact.firstName}}</td>
+					<td>{{contact.lastName}}</td>
+					<td>{{contact.phoneNumber}}</td>
+					<td>{{contact.other}}</td>
+				</tr>
+			</tbody>
+		</table>	
+	</div>
+	<script src="js/lib/angular/angular.min.js"></script>
+	<script src="js/phoneBook.js"></script>
+</body>
+</html>

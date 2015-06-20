@@ -1,0 +1,17 @@
+{
+  "name": "bestSellers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tamar Zanzouri",
+  "license": "ISC",
+  "dependencies": {
+    "daemon": "^1.1.0",
+    "express": "^4.12.4",
+    "fs": "0.0.2"
+  }
+}
